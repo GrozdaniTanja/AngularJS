@@ -1,7 +1,7 @@
 angular.module('employeeApp', [])
     .controller('EmployeeController', ['EmployeeService', function(EmployeeService) {
-        const vm = this;
-        vm.employees = [];
+        const vm = this; 
+        vm.employees = []; 
         vm.selectedEmployee = null;
 
         EmployeeService.getEmployees().then(function(response) {
@@ -9,7 +9,7 @@ angular.module('employeeApp', [])
         });
 
         vm.selectEmployee = function(employee) {
-            vm.selectedEmployee = employee;
+            vm.selectedEmployee = employee; 
         };
 
         vm.deleteEmployee = function() {

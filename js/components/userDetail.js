@@ -1,8 +1,8 @@
 
 angular.module('employeeApp').component('userDetail', {
     transclude: true,
-    bindings: {
-        employee: '<',       
+    bindings: { 
+        employee: '<', 
         onDelete: '&'        
     },
     template: `
@@ -13,7 +13,7 @@ angular.module('employeeApp').component('userDetail', {
                         <h4 class="modal-title">User Details</h4>
                         <button type="button" class="btn-close" ng-click="$ctrl.employee = null">&times;</button>
                     </div>
-                    <div class="modal-body" ng-transclude>
+                    <div class="modal-body">
                         <p><strong>Username:</strong> {{$ctrl.employee.username}}</p>
                         <p><strong>Name:</strong> {{$ctrl.employee.name}}</p>
                         <p><strong>Email:</strong> {{$ctrl.employee.email}}</p>
@@ -23,6 +23,7 @@ angular.module('employeeApp').component('userDetail', {
                             {{$ctrl.employee.address.street}}, 
                             {{$ctrl.employee.address.city}}
                         </p>
+                        <div ng-transclude></div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-danger" ng-click="$ctrl.onDelete()">Delete</button>

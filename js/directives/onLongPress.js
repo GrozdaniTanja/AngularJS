@@ -10,7 +10,6 @@ angular.module('employeeApp').directive('onLongPress', ['$timeout', function($ti
                 }, 1000);
             });
 
-
             element.on('mouseup mouseleave', function() {
                 $timeout.cancel(timer);
             });

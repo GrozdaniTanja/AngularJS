@@ -6,10 +6,10 @@
     <title>Company Employees</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body ng-app = "myapp">
-    <div class="container mt-4">
+<body>
     <div ng-controller="EmployeeController as empCtrl" class="container mt-4">
         <h2 class="text-center mb-4">Company Employees</h2>
+
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
@@ -31,10 +31,11 @@
                 </tr>
             </tbody>
         </table>
+
+        <user-detail employee="empCtrl.selectedEmployee" on-delete="empCtrl.deleteEmployee()" ng-if="empCtrl.selectedEmployee"></user-detail>
+
         
-        <user-detail employee="empCtrl.selectedEmployee" on-delete="empCtrl.deleteEmployee()"></user-detail>
     </div>
-</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <script src="js/app.js"></script>
