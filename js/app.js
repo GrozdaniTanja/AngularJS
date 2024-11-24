@@ -12,4 +12,15 @@ angular.module('employeeApp', [])
             vm.selectedEmployee = employee;
         };
 
+        vm.deleteEmployee = function() {
+            const confirmation = confirm('Are you sure you want to delete this record?');
+            if (confirmation) {
+                const index = vm.employees.indexOf(vm.selectedEmployee);
+                if (index > -1) {
+                    vm.employees.splice(index, 1);
+                }
+                vm.selectedEmployee = null;
+            }
+        };
+
     }]);
