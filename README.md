@@ -39,11 +39,12 @@ A simple employee management web application built with **AngularJS**, designed 
 
 4. **Run a Local Server:**
     Since AngularJS apps often require a web server, you can use a lightweight server like http-server:
-
-    # Install http-server globally if not already installed
+    **Install http-server globally if not already installed**
+    ```bash
     npm install -g http-server
-
-    # Run the server in the project directory
+    ```
+    **Run the server in the project directory**
+    ```bash
     http-server
 
 5. **Access the App:**
