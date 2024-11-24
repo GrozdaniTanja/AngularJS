@@ -10,20 +10,27 @@
     <div ng-controller="EmployeeController as empCtrl" class="container mt-4">
         <h2 class="text-center mb-4">Company Employees</h2>
 
-        <table class="table table-hover table-bordered">
+        <!-- Loader -->
+        <div ng-if="empCtrl.loading" class="text-center mt-4">
+            <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Employee Table -->
+        <table class="table table-hover table-bordered" ng-if="!empCtrl.loading">
             <thead class="thead-dark">
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Email</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
+                    <th scope="col">Email</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="employee in empCtrl.employees" 
                     ng-click="empCtrl.selectEmployee(employee)" 
-                    ng-class="{'table-active': empCtrl.selectedEmployee === employee}"
-                    on-long-press>
+                    ng-class="{'table-active': empCtrl.selectedEmployee === employee}">
                     <td>{{employee.id}}</td>
                     <td>{{employee.name}}</td>
                     <td>{{employee.username}}</td>
@@ -32,9 +39,25 @@
             </tbody>
         </table>
 
-        <user-detail employee="empCtrl.selectedEmployee" on-delete="empCtrl.deleteEmployee()" ng-if="empCtrl.selectedEmployee"></user-detail>
+        <!-- Popup Component/UserDetail-->
+        <popup 
+            title="User Details" 
+            on-close="empCtrl.selectedEmployee = null" 
+            ng-if="empCtrl.selectedEmployee">
+            <p><strong>Username:</strong> {{empCtrl.selectedEmployee.username}}</p>
+            <p><strong>Name:</strong> {{empCtrl.selectedEmployee.name}}</p>
+            <p><strong>Email:</strong> {{empCtrl.selectedEmployee.email}}</p>
+            <p><strong>Website:</strong> {{empCtrl.selectedEmployee.website}}</p>
+            <p><strong>Phone:</strong> {{empCtrl.selectedEmployee.phone}}</p>
+            <p><strong>Address:</strong> 
+                {{empCtrl.selectedEmployee.address.street}}, 
+                {{empCtrl.selectedEmployee.address.city}}
+            </p>
+            <div class="modal-footer">
+                <button class="btn btn-danger" ng-click="empCtrl.deleteEmployee()">Delete</button>
+            </div>
+        </popup>
 
-        
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
