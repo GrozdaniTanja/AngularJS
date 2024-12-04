@@ -7,7 +7,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div ng-controller="EmployeeController as empCtrl" class="container mt-4">
+    <div ng-controller="EmployeeController as empCtrl" class="container mt-4" >
         <h2 class="text-center mb-4">Company Employees</h2>
 
         <!-- Loader -->
@@ -30,7 +30,8 @@
             <tbody>
                 <tr ng-repeat="employee in empCtrl.employees" 
                     ng-click="empCtrl.selectEmployee(employee)" 
-                    ng-class="{'table-active': empCtrl.selectedEmployee === employee}">
+                    ng-class="{'table-active': empCtrl.selectedEmployee === employee}" 
+                    on-long-press >
                     <td>{{employee.id}}</td>
                     <td>{{employee.name}}</td>
                     <td>{{employee.username}}</td>
